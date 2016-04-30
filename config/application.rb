@@ -37,6 +37,11 @@ module Funyee
       g.stylesheets false
       g.javascripts false
       g.helper false
+      g.controller_specs false
+      g.view_specs false
+      g.helper_specs false
+      g.routing_specs false
+      g.request_specs false
     end
   end
 end
