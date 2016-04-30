@@ -38,6 +38,9 @@ source "https://rails-assets.org" do
   gem "rails-assets-angular-devise"
 end
 
+# Use font-awesome-rails to get icons
+gem 'font-awesome-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
