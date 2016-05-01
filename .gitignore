@@ -19,3 +19,4 @@
 .DS_Store
 
 public/bower_components/*
+public/gulp/node_modules/*
