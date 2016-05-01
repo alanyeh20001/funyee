@@ -38,6 +38,9 @@ source "https://rails-assets.org" do
   gem "rails-assets-angular-devise"
 end
 
+# Use facebook omniauth to conduct third-party authentication
+gem 'omniauth-facebook'
+
 # Use font-awesome-rails to get icons
 gem 'font-awesome-rails'
 
