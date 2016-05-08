@@ -50,6 +50,8 @@ group :development, :test do
   
   # User RSpec to conduct the test
   gem 'rspec-rails'
+  # Use factory_girl_rails to support RSpec
+gem 'factory_girl_rails'
 end
 
 group :development do
