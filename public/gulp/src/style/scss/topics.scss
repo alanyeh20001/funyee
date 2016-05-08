@@ -1,0 +1,53 @@
+.topics-div {
+    display:block;
+    padding-top: 50px;
+    margin:0px auto 0px auto;
+	width: 80%;
+	background-color:#66B3BB;
+
+	.contents-box {
+        display:block;
+	    width:80%;
+	    margin: 0px auto 0px auto;
+	    padding: 0px 0px 10px 0px;
+
+        .content {
+            display:block;
+            margin:10px 0px 10px 0px;
+        	background-color: #D2DC39;       
+        	height: 200px;
+        	border-radius: 10px;
+        	padding: 10px;
+
+        	.text-block {
+                display:block;
+        	    padding: 5px;
+        	    height:30px;
+
+        	    .text {
+        	        background-color: #6BA72A;
+        	        padding: 5px;
+        	        margin: 0px 5px 0px 5px;
+                 	border-radius: 10px;
+                    display: inline-block;
+        	    }
+
+        	    .lang {
+        	        background-color: red;
+        	        padding: 5px;
+        	        margin: 0px 5px 0px 5px;
+                 	border-radius: 10px;
+                    display: inline-block;
+        	    }
+
+        	    .left {
+        	        float: left;
+        	    }
+
+        	    .right {
+        	        float: right;
+        	    }
+        	}
+        }
+	}
+}
