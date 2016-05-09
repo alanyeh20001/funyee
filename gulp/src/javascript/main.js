@@ -6,11 +6,15 @@ var funyeeApp = angular.module("funyeeApp", ["ui.router"]);
         $urlRouterProvider.otherwise("/");
     
     	$stateProvider
-            .state('index', {
+            .state('topics', {
                 url: "/",
                 views: {
-                	"viewA": {templateUrl: "/templates/navbar.html"},
-                	"viewB": {templateUrl: "/templates/topics.html"}
+                	"viewA": {templateUrl: "dist/templates/topics.html"}
+                }
+            }).state('user', {
+                url: "/user",
+                views: {
+                	"viewA": {templateUrl: "dist/templates/user.html"}
                 }
             });
     }]);

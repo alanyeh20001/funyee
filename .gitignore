@@ -18,5 +18,6 @@
 
 .DS_Store
 
-public/bower_components/*
-public/gulp/node_modules/*
+gulp/bower_components/*
+gulp/node_modules/*
+gulp/dist/*
