@@ -20,4 +20,8 @@
 
 gulp/bower_components/*
 gulp/node_modules/*
-gulp/dist/*
+gulp/dist/**/*
+
+public/bower_components/
+public/dist/
+public/index.html

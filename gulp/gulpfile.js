@@ -17,6 +17,22 @@ path= {
     templates: ['src/templates/**/*.html']
 };
 
+distPath = "./dist/**/*.*";
+
+bowerPaths = [
+    "./bower_components/angular/angular.min.js",
+    "./bower_components/angular-ui-router/release/angular-ui-router.min.js"
+];
+
+gulp.task('build', function() {
+    gulp.src("index.html")
+        .pipe(gulp.dest("../public"));
+    gulp.src(distPath, { base: './' })
+        .pipe(gulp.dest("../public"));
+    gulp.src(bowerPaths, { base: './' })
+        .pipe(gulp.dest("../public"));
+})
+
 gulp.task('webserver', function() {
     gulpConnect.server();
 })
