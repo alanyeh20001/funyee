@@ -1,0 +1,16 @@
+<html ng-app= "funyeeApp">
+    <head>
+        <meta charset="UTF-8">
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="dist/javascript/main.min.js"></script>
+        <link rel="stylesheet" type"text/css" href="dist/style/main.min.css">
+    </head>
+    <body>
+        <div class= "navbar-div">
+            <a ui-sref="topics">Topics</a>
+            <a ui-sref="user">User</a>
+        </div>
+        <div class="view-a" ui-view="viewA"></div>
+    </body>
+</html>

@@ -4,20 +4,43 @@ var gulp = require('gulp'),
     gulpUglify = require('gulp-uglify'),
     gulpSass = require('gulp-sass'),
     gulpUglifycss = require('gulp-uglifycss'),
-    gulpNgmin = require('gulp-ngmin');
+    gulpNgmin = require('gulp-ngmin'),
+    gulpConnect = require('gulp-connect');
 
 
-gulp.task('default', ['script', 'sass', 'style']);
+gulp.task('default', ['script', 'sass', 'style', 'templates']);
 
 path= {
     scripts: ['src/javascript/**/*.js'],
     styles: ['src/style/css/*.css'],
-    sass: ['src/style/scss/**/*.scss']
+    sass: ['src/style/scss/**/*.scss'],
+    templates: ['src/templates/**/*.html']
 };
+
+distPath = "./dist/**/*.*";
+
+bowerPaths = [
+    "./bower_components/angular/angular.min.js",
+    "./bower_components/angular-ui-router/release/angular-ui-router.min.js"
+];
+
+gulp.task('build', function() {
+    gulp.src("index.html")
+        .pipe(gulp.dest("../public"));
+    gulp.src(distPath, { base: './' })
+        .pipe(gulp.dest("../public"));
+    gulp.src(bowerPaths, { base: './' })
+        .pipe(gulp.dest("../public"));
+})
+
+gulp.task('webserver', function() {
+    gulpConnect.server();
+})
 
 gulp.task('watch', function () {
     gulp.watch(path.scripts, ['script']);
     gulp.watch(path.sass, ['sass', 'style']);
+    gulp.watch(path.templates, ['templates']);
 });
 
 gulp.task('style', function() {
@@ -25,6 +48,11 @@ gulp.task('style', function() {
         .pipe(gulpConcat('main.min.css'))
         .pipe(gulpUglifycss())
         .pipe(gulp.dest('dist/style'));
+});
+
+gulp.task('templates', function() {
+    gulp.src(path.templates)
+        .pipe(gulp.dest('dist/templates'));
 });
 
 gulp.task('script', function () {
