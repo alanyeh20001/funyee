@@ -12,7 +12,7 @@ class SentencesController < ApplicationController
   end
   
   def create
-    @sentence = Sentence.new(sentence_params)
+    @sentence = current_user.sentences.build(sentence_params)
     
     if @sentence.save
       @info = { status: "creation success" }
@@ -24,13 +24,13 @@ class SentencesController < ApplicationController
   end
   
   def edit
-    @sentence = Sentence.find(params[:id])
+    @sentence = current_user.sentences.find(params[:id])
     
     render json: @sentence
   end
   
   def update
-    @sentence = Sentence.find(params[:id])
+    @sentence = current_user.sentences.find(params[:id])
     
     if @sentence.update(sentence_params)
       @info = { status: "update success" }
@@ -42,7 +42,7 @@ class SentencesController < ApplicationController
   end
   
   def destroy
-    @sentence = Sentence.find(params[:id])
+    @sentence = current_user.sentences.find(params[:id])
     
     if @sentence.destroy
       @info = { status: "destroy success" }
