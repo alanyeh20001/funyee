@@ -25,7 +25,7 @@ var funyeeApp = angular.module("funyeeApp", ["ui.router", "pascalprecht.translat
         "home": "主頁",
         "language.english": "英文",
         "language.chinese": "中文",
-        "question.ask": "提問"
+        "question.ask": "題問"
     };
 
     funyeeApp
