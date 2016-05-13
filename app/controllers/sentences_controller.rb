@@ -2,8 +2,24 @@ class SentencesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    @sentences = Sentence.all
-    render json: @sentences
+    question_ids = Sentence.select(:id).where(is_question: true)
+    sentences = Sentence.where(question_id: question_ids).order(:question_id, :created_at)
+    
+    @topics = []
+    question_group = []
+    id_check = nil
+    
+    sentences.each do |sentence|
+      if sentence.question_id != id_check && id_check != nil
+        @topics << question_group
+        question_group = []
+      end
+      question_group << sentence
+      id_check = sentence.question_id
+    end
+    @topics << question_group
+    
+    render json: @topics
   end
     
   def new
@@ -15,6 +31,8 @@ class SentencesController < ApplicationController
     @sentence = current_user.sentences.build(sentence_params)
     
     if @sentence.save
+      @sentence.update(question_id: @sentence.id)
+      
       @info = { status: "creation success" }
       render json: @info
     else
