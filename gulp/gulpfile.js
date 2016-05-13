@@ -9,27 +9,49 @@ var gulp = require('gulp'),
 
 
 gulp.task('default', ['script', 'sass', 'style', 'templates']);
+gulp.task('server', ['webserver', 'watch']);
 
 path= {
-    scripts: ['src/javascript/**/*.js'],
-    styles: ['src/style/css/*.css'],
-    sass: ['src/style/scss/**/*.scss'],
-    templates: ['src/templates/**/*.html']
+    scripts: ['./src/javascript/**/*.js'],
+    styles: ['./src/style/css/**/*.css'],
+    sass: ['./src/style/scss/**/*.scss'],
+    templates: ['./src/templates/**/*.html']
 };
 
-distPath = "./dist/**/*.*";
+distPath = {
+    script: "./dist/javascript/*.js",
+    style: "./dist/**/*.css",
+    templates: "./dist/**/*.html"
+}
 
 bowerPaths = [
     "./bower_components/angular/angular.min.js",
-    "./bower_components/angular-ui-router/release/angular-ui-router.min.js"
+    "./bower_components/angular-ui-router/release/angular-ui-router.min.js",
+    "./bower_components/components-font-awesome/css/font-awesome.min.css",
+    "./bower_components/components-font-awesome/fonts/*",
+    "./bower_components/angular-translate/angular-translate.min.js",
+    "./bower_components/angular-resource/angular-resource.min.js"
 ];
 
-gulp.task('build', function() {
+gulp.task('build:bower', function() {
+    gulp.src(bowerPaths, { base: './' })
+        .pipe(gulp.dest("../public"));
+})
+
+gulp.task('build:script', function() {
+    gulp.src(distPath.script, { base: './' })
+        .pipe(gulp.dest("../public"));
+})
+
+gulp.task('build:style', function() {
+    gulp.src(distPath.style, { base: './' })
+        .pipe(gulp.dest("../public"));
+})
+
+gulp.task('build:templates', function() {
     gulp.src("index.html")
         .pipe(gulp.dest("../public"));
-    gulp.src(distPath, { base: './' })
-        .pipe(gulp.dest("../public"));
-    gulp.src(bowerPaths, { base: './' })
+    gulp.src(distPath.templates, { base: './' })
         .pipe(gulp.dest("../public"));
 })
 
@@ -39,8 +61,18 @@ gulp.task('webserver', function() {
 
 gulp.task('watch', function () {
     gulp.watch(path.scripts, ['script']);
-    gulp.watch(path.sass, ['sass', 'style']);
+    gulp.watch(path.sass, ['style']);
     gulp.watch(path.templates, ['templates']);
+});
+
+gulp.task('watch:build', function() {
+    gulp.watch(path.scripts, ['script']);
+    gulp.watch(distPath.script, ['build:script']);
+    gulp.watch(path.sass, ['sass']);
+    gulp.watch(path.styles, ['style']);
+    gulp.watch(distPath.style, ['build:style']);
+    gulp.watch(path.templates, ['templates']);
+    gulp.watch(distPath.templates, ['build:templates']);
 });
 
 gulp.task('style', function() {
@@ -52,7 +84,7 @@ gulp.task('style', function() {
 
 gulp.task('templates', function() {
     gulp.src(path.templates)
-        .pipe(gulp.dest('dist/templates'));
+        .pipe(gulp.dest('./dist/templates'), { base: './' });
 });
 
 gulp.task('script', function () {

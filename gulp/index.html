@@ -1,15 +1,21 @@
 <html ng-app= "funyeeApp">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="bower_components/angular/angular.min.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="bower_components/angular-translate/angular-translate.min.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.min.js"></script>
         <script src="dist/javascript/main.min.js"></script>
         <link rel="stylesheet" type"text/css" href="dist/style/main.min.css">
+        <link rel="stylesheet" type"text/css" href="bower_components/components-font-awesome/css/font-awesome.min.css">
     </head>
     <body>
-        <div class= "navbar-div">
-            <a ui-sref="topics">Topics</a>
-            <a ui-sref="user">User</a>
+        <div class= "navbar-div" ng-controller="navbarCtrl as Navbar">
+            <a ui-sref="topics">{{'home' | translate}}{{Navbar.test}}</a>
+            <a ui-sref="login">{{'user.login' | translate}}</a>
+            <span ng-click="Navbar.changeLan('en_US')">{{'language.english' | translate}}</span>
+            <span ng-click="Navbar.changeLan('zh_TW')">{{'language.chinese' | translate}}</span>
         </div>
         <div class="view-a" ui-view="viewA"></div>
     </body>
