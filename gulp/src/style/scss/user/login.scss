@@ -1,0 +1,58 @@
+.user-login-div {
+	padding-top: 50px;
+
+	.login-box {
+        background-color: rgba(143,168,239,0.68);
+	    width: 400px;
+	    display: block;
+	    margin: 0px auto;
+	    border-radius: 15px;
+
+	    .title {
+            display: block;
+            text-align: center;
+            font-size: 2em;
+            color: white;
+
+	    }
+
+        .slash-line {
+            border-top: 1px solid white;
+            width: 80%;
+            display: block;
+            margin: 10px auto;
+        }
+        
+        .brands {
+
+            display: block;
+            width: 80px;
+            margin: 0px auto;
+            padding: 10px 0px;
+
+	        .facebook {
+	            color: white;
+                background-color: #365899;
+                text-align: center;
+                cursor: pointer;
+	        }
+	        .google {
+	            color: white;
+                background-color: #DC4C41;
+                text-align: center;
+                cursor: pointer;
+	        }
+            .brand-icon {
+                display: inline-block;
+                padding:8px;
+                font-size: 20px;
+                border-radius: 18px;
+                width: 36px;
+                height: 36px;
+                margin:0px auto;
+            }
+        }
+
+	}
+
+}
