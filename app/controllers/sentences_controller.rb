@@ -31,7 +31,7 @@ class SentencesController < ApplicationController
     @sentence = current_user.sentences.build(sentence_params)
     
     if @sentence.save
-      @sentence.update(question_id: @sentence.id)
+      @sentence.update(question_id: @sentence.id) if @sentence.is_question == true
       
       @info = { status: "creation success" }
       render json: @info

@@ -15,7 +15,8 @@ path= {
     scripts: ['./src/javascript/**/*.js'],
     styles: ['./src/style/css/**/*.css'],
     sass: ['./src/style/scss/**/*.scss'],
-    templates: ['./src/templates/**/*.html']
+    templates: ['./src/templates/**/*.html'],
+    images: ['./images/**/*.png']
 };
 
 distPath = {
@@ -55,6 +56,11 @@ gulp.task('build:templates', function() {
         .pipe(gulp.dest("../public"));
 })
 
+gulp.task('build:images', function() {    
+    gulp.src(distPath.images, { base: './' })
+        .pipe(gulp.dest("../public"));
+})
+
 gulp.task('webserver', function() {
     gulpConnect.server();
 })
@@ -73,6 +79,7 @@ gulp.task('watch:build', function() {
     gulp.watch(distPath.style, ['build:style']);
     gulp.watch(path.templates, ['templates']);
     gulp.watch(distPath.templates, ['build:templates']);
+    gulp.watch(path.images, ['build:images']);
 });
 
 gulp.task('style', function() {

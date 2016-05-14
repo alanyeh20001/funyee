@@ -1,5 +1,5 @@
 class Sentence < ActiveRecord::Base
-  validates :content, :language, :is_question, presence: true
+  validates :content, :language, presence: true
 
   belongs_to :user
 end

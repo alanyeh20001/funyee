@@ -16,7 +16,13 @@ var funyeeApp = angular.module("funyeeApp", ["ui.router", "pascalprecht.translat
         "home": "home",
         "language.english": "english",
         "language.chinese": "chinese",
-        "question.ask": "Ask"
+        "question.ask": "Ask",
+        "question.title": "Please enter your question here",
+        "question.submit": "Submit",
+        "question": "Question",
+        "answer.title": "Please enter your answer here",
+        "answer": "Answer",
+        "language": "Language"
     };
     
     var zh_TW = {
@@ -25,7 +31,13 @@ var funyeeApp = angular.module("funyeeApp", ["ui.router", "pascalprecht.translat
         "home": "主頁",
         "language.english": "英文",
         "language.chinese": "中文",
-        "question.ask": "題問"
+        "question.ask": "題問",
+        "question.title": "請輸入您的問題",
+        "question.submit": "送出",
+        "answer.title": "請輸入您的答案",
+        "question": "問題",
+        "answer": "回答",
+        "language": "語言"
     };
 
     funyeeApp
@@ -58,11 +70,6 @@ var funyeeApp = angular.module("funyeeApp", ["ui.router", "pascalprecht.translat
                         url: "/login",
                         views: {
                         	"viewA": {templateUrl: "dist/templates/user/login.html"}
-                        }
-                    }).state('login.test1', {
-                    	url: "/test",
-                        views: {
-                        	"test1@login": {templateUrl: "dist/templates/user/test.html"}
                         }
                     });
             }

@@ -12,6 +12,7 @@
     </head>
     <body>
         <div class= "navbar-div" ng-controller="navbarCtrl as Navbar">
+            <img src="images/funyee.png" class="web-logo"></img>
             <a ui-sref="topics">{{'home' | translate}}{{Navbar.test}}</a>
             <a ui-sref="login">{{'user.login' | translate}}</a>
             <span ng-click="Navbar.changeLan('en_US')">{{'language.english' | translate}}</span>
