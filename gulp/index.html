@@ -6,17 +6,26 @@
         <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="bower_components/angular-translate/angular-translate.min.js"></script>
         <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+        <script src="bower_components/AngularDevise/lib/devise-min.js"></script>
         <script src="dist/javascript/main.min.js"></script>
         <link rel="stylesheet" type"text/css" href="dist/style/main.min.css">
         <link rel="stylesheet" type"text/css" href="bower_components/components-font-awesome/css/font-awesome.min.css">
     </head>
     <body>
         <div class= "navbar-div" ng-controller="navbarCtrl as Navbar">
-            <img src="images/funyee.png" class="web-logo"></img>
-            <a ui-sref="topics">{{'home' | translate}}{{Navbar.test}}</a>
-            <a ui-sref="login">{{'user.login' | translate}}</a>
-            <span ng-click="Navbar.changeLan('en_US')">{{'language.english' | translate}}</span>
-            <span ng-click="Navbar.changeLan('zh_TW')">{{'language.chinese' | translate}}</span>
+            <a ui-sref="topics" class="custom-a">
+                <img src="images/funyee.png" class="web-logo"></img>
+            </a>
+            <div class="right-items">
+                <a ui-sref="login" class="item custom-a" ng-hide="Navbar.isLogin">
+                    {{'user.login' | translate}}
+                </a>
+                <span class="item custom-a" ng-show="Navbar.isLogin" ng-click="Navbar.logout()">
+                    {{'user.logout' | translate}}
+                </span>
+                <span ng-click="Navbar.changeLan('en_US')" class="item">{{'english' | translate}}</span>
+                <span ng-click="Navbar.changeLan('zh_TW')" class="item">{{'chinese' | translate}}</span>
+            </div>
         </div>
         <div class="view-a" ui-view="viewA"></div>
     </body>

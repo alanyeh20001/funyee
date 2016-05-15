@@ -28,6 +28,17 @@
             text-align: center;
             cursor: pointer;
         }
+
+        .login-to-ask {
+            font-size: 1.5em;
+            display: block;
+            width: 150px;
+            margin: 0px auto 10px auto;            
+            border: 1px solid #FF9292;
+            border-radius: 10px;
+            padding: 5px;
+            text-align: center;
+        }
     }
 
     .ask-form {
@@ -189,6 +200,18 @@
                 padding: 5px;
                 text-align: center;
                 cursor: pointer;
+            }
+
+            .login-to-reply{
+                font-size: 1em;
+                display: inline-block;
+                margin: 5px 10px 5px 0px;
+                width: 150px;  
+                float: right;         
+                border: 1px solid #8add6d;
+                border-radius: 10px;
+                padding: 5px;
+                text-align: center;            
             }
         }
 	}

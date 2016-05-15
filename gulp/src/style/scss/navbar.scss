@@ -5,12 +5,41 @@
 	position: fixed;
 	top: 0px;
 	left: 0px;
+    
+    .custom-a {
+        text-decoration: none !important;
+    }
 
 	.web-logo {
+	    display: inline-block;
+	    vertical-align: middle;
 	    width: 60px;
 	    height: 60px;
 	    background-color: rgb(255, 168, 169);
 	    border-radius: 60px;
 	    margin:　5px 5px 5px 30px;
 	}
+
+    .right-items {
+        display: inline-block;
+	    position: absolute;
+	    right: 0px;
+	    width: 300px;
+  	    .item {
+            color: black !important;
+	        text-align: center;
+	        width: 90px;
+	        display: inline-block;
+	        font-size: 14px;
+	        cursor: pointer;
+	        padding: 28px 0px;
+	    }
+    
+	    .item:hover {
+	        font-size: 16px;
+	        color: white !important;
+	        padding: 27px 0px;
+	    }
+    }
+
 }

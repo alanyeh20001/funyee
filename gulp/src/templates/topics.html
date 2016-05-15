@@ -1,6 +1,7 @@
 <div class="topics-div" ng-controller="topicsCtrl as Topics">
     <div class="function-zone" ng-init="Topics.askForm=false">
-        <span class="button" ng-click="Topics.askForm = !Topics.askForm">{{'question.ask' | translate}}</span>
+        <span class="button" ng-click="Topics.askForm = !Topics.askForm" ng-show="Topics.isLogin">{{'question.ask' | translate}}</span>
+        <span class="login-to-ask" ng-hide="Topics.isLogin">{{'question.login.ask' | translate}}</span>
     </div>
     <form class="form ask-form" ng-show="Topics.askForm">
         <span class="form-title">{{'question.title' | translate}}</span>
@@ -11,7 +12,7 @@
             </div>
             <div class="input-div">
                 <label class="input-label">{{'language' | translate}}</label>
-                <select class="select" ng-model="Topics.languageSelected" ng-init="Topics.languageSelected = 'English'">
+                <select class="select" ng-model="Topics.languageSelected" ng-init="Topics.initQuestionLanguage()">
                     <option class="option" ng-repeat="language in Topics.languages" ng-value="language">{{language}}</option>
                 </select>
             </div>
@@ -24,15 +25,18 @@
                 <div ng-repeat="sentence in topic" class="text-block">
                     <i class="user-info fa fa-user" ng-class="sentence.is_question?'left':'right'" aria-hidden="true"></i>
                     <span class="text" ng-class="sentence.is_question?'left':'right'">{{sentence.content}}</span>
-                    <span class="lang" ng-class="sentence.is_question?'left':'right'">{{sentence.language}}</span>
+                    <span class="lang" ng-class="sentence.is_question?'left':'right'">{{sentence.language | translate}}</span>
                 </div>
     	    </div>
             <div class="content-function-bar">
                 <i class="fa fa-thumbs-o-up content-function-icon"></i>
                 <i class="fa fa-star-o content-function-icon"></i>
                 <i class="fa fa-minus content-function-icon"></i>
-                <span class="content-funtion-reply" ng-click="Topics.showReply[$index] = !Topics.showReply[$index]">
-                    Reply
+                <span class="content-funtion-reply" ng-click="Topics.showReply[$index] = !Topics.showReply[$index]" ng-show="Topics.isLogin">
+                    {{'answer.reply' | translate }}
+                </span>
+                <span class="login-to-reply" ng-hide="Topics.isLogin">
+                    {{'answer.reply.login.ask' | translate }}
                 </span>
             </div>
             <form class="form reply-form" ng-show="Topics.showReply[$index]">
@@ -44,7 +48,7 @@
                     </div>
                     <div class="input-div">
                         <label class="input-label">{{'language' | translate}}</label>
-                        <select class="select" ng-model="Topics.answersInfo[$index].language" ng-init="Topics.answersInfo[$index].language = 'English'">
+                        <select class="select" ng-model="Topics.answersInfo[$index].language" ng-init="Topics.initTopicsLanguage($index)">
                             <option class="option" ng-repeat="language in Topics.languages" ng-value="language">{{language}}</option>
                         </select>
                     </div>

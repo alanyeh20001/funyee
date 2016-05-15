@@ -31,7 +31,8 @@ bowerPaths = [
     "./bower_components/components-font-awesome/css/font-awesome.min.css",
     "./bower_components/components-font-awesome/fonts/*",
     "./bower_components/angular-translate/angular-translate.min.js",
-    "./bower_components/angular-resource/angular-resource.min.js"
+    "./bower_components/angular-resource/angular-resource.min.js",
+    "./bower_components/AngularDevise/lib/devise-min.js"
 ];
 
 gulp.task('build:bower', function() {

@@ -1,4 +1,4 @@
-<div class="user-login-div">
+<div class="user-login-div" ng-controller="loginCtrl as Login">
 	<div class="login-box">
 		<span class="title">{{'user.login' | translate}}</span>
         <div class="slash-line"></div>
@@ -9,5 +9,8 @@
 		    </a>
 		    <i class="fa fa-google google brand-icon" aria-hidden="true"></i>
 		</div>
+		<span class="test-login" ng-click="Login.testLogin()">
+			{{'user.login.test' | translate}}
+		</span>
 	</div>
 </div>

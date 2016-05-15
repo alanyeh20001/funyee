@@ -7,6 +7,7 @@
 	    display: block;
 	    margin: 0px auto;
 	    border-radius: 15px;
+        padding: 10px;
 
 	    .title {
             display: block;
@@ -51,6 +52,18 @@
                 height: 36px;
                 margin:0px auto;
             }
+        }
+
+        .test-login {
+            width: 300px;
+            border: 1px solid white;
+            border-radius: 5px;
+            display: block;
+            margin: 5px auto;
+            text-align: center;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
         }
 
 	}

@@ -1,16 +1,25 @@
 (function() {
     funyeeApp
-        .controller("topicsCtrl", ["$scope", "sentenceServ",
-        	function($scope, sentenceServ) {
-                
+        .controller("topicsCtrl", ["$scope", "sentenceServ", "$filter", "Auth",
+        	function($scope, sentenceServ, $filter, Auth) {
+
                 var Topics = this;
                 var Sentence = sentenceServ.getRestfulModel();
+                Topics.isLogin = false;
+
+                Auth.currentUser()
+                    .then(function(user) {
+                        Topics.isLogin = true;
+                        console.log(user);
+                    }).then(function(error) {
+
+                    });
 
                 Topics.languages = [
-                    "English",
-                    "Chinese",
-                    "Japanese",
-                    "Korean"
+                    "english",
+                    "chinese",
+                    "japanese",
+                    "korean"
                 ];
 
                 Topics.getTopics =function() {
@@ -57,6 +66,14 @@
                     }
                 };
 
+                Topics.initTopicsLanguage = function(index) {
+                    Topics.answersInfo[index].language = 'english';
+                };
+
+                Topics.initQuestionLanguage = function() {
+                    Topics.languageSelected = 'english';
+                }
+
                 Topics.submitAnswer = function(index) {
 
                     var content = Topics.answersInfo[index].answer,
@@ -76,10 +93,16 @@
                     newSentence.language = language;
                     newSentence.is_question = isQuestion;
                     newSentence.question_id = questionId;
-                    console.log(newSentence.$save());
 
-                    Topics.showReply[index] = false;
-                    Topics.getTopics();
+                    (new Promise(function(resolve, reject) {
+                        var result = newSentence.$save();
+                        resolve(result);
+                    })).then(function(result) {
+                        console.log(result);
+                        Topics.showReply[index] = false;
+                        Topics.getTopics();
+                    });
+
                 };
 
 
