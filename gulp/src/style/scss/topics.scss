@@ -59,8 +59,6 @@
             display: block;
             font-size: 1.2em;
             text-align: center;
-            margin: 0px 0px 0px 0px;
-            padding: 0px 0px 0px 0px;
         }
         
         .input-box {
@@ -127,43 +125,71 @@
         .content {
             display: block;
             margin: 20px 0px 0px 0px;
-        	background-color: white;     
+        	background-color: white;
         	height: 200px;
         	border-radius: 10px;
-        	padding: 10px;
-            overflow: scroll;
+        	padding: 0px 10px 10px 10px;
+            overflow-y: scroll;
 
             .text-block {
                 display:block;
-                padding: 5px;
-                height:50px;
-
-                .user-info {
-                    font-size: 14px;
-                    background-color: #FB8B8B;
-                    padding: 8px;
-                    display: inline-block;   
-                    border-radius: 30px;         
-                }
-
-                .text {
-                    background-color: #AEDCB8;
-                    padding: 5px;
-                 	border-radius: 10px;
-                    display: inline-block;
-                }
-                .lang {
-                    background-color: #D8D8D8;
-                    padding: 5px;
-                 	border-radius: 10px;
-                    display: inline-block;
-                }
-                .left {
+                width: 100%;
+                
+                .box-left {
                     float: left;
+                    clear: both;
                 }
-                .right {
+                .box-right {
                     float: right;
+                    clear: both;
                 }
+
+                .info-box {
+                    display: inline-block;
+                    padding: 15px 0px 0px 0px;
+
+                    .user-info {
+                        font-size: 14px;
+                        background-color: #FB8B8B;
+                        padding: 8px;
+                        display: inline-block;   
+                        border-radius: 30px;         
+                    }
+                    .lang {
+                        background-color: #D8D8D8;
+                        padding: 5px;
+                        border-radius: 10px;
+                        display: inline-block;
+                    }
+                }
+
+                .text-box {
+                    display: block;
+                    width: 100%;
+
+                    .text {
+                        padding: 5px;
+                        border-radius: 10px;
+                        display: inline-block;          
+                        word-wrap: break-word;
+                        max-width: 100%;
+                    }
+                    .question {
+                        background-color: #AEDCB8;
+                    }
+                    .answer {
+                        background-color: #5BA9E6;
+                    }
+                    .left {
+                        float: left;
+                        clear: both;
+                    }
+                    .right {
+                        float: right;
+                        clear: both;
+                    }
+                }
+
         	}
         }
 
@@ -173,46 +199,102 @@
             border-radius: 10px;
             margin: 0px auto;
             display: block;
+            overflow: auto;
 
-            .content-function-icon {
-                font-size: 24px;
-                padding:10px;
-                color: #AAAAAA;
-            }
-            .content-function-icon:hover {
-                cursor: pointer;
-                color: red;
-            }
-            .content-funtion-reply {
-                font-size: 1em;
-                display: inline-block;
-                margin: 5px 10px 5px 0px;
-                width: 70px;
-                float: right;
-        
-                color: #fff;
-                background-color: #8add6d;
-                background-image: -webkit-linear-gradient(#8add6d, #60b044);
-                background-image: linear-gradient(#8add6d, #60b044);
-        
-                border-color: #4a993e;
-                border-radius: 10px;
-                padding: 5px;
-                text-align: center;
-                cursor: pointer;
+            .content-function-icons {
+                display: block;
+
+                .content-function-icon {
+                    display: inline-block;
+                    font-size: 24px;
+                    padding:10px;
+                    color: #AAAAAA;
+                }
+                .content-function-icon:hover {
+                    display: inline-block;
+                    cursor: pointer;
+                    color: red;
+                }
+                .content-funtion-reply {
+                    font-size: 1em;
+                    display: inline-block;
+                    margin: 5px 10px 5px 0px;
+                    width: 70px;
+                    float: right;
+            
+                    color: #fff;
+                    background-color: #8add6d;
+                    background-image: -webkit-linear-gradient(#8add6d, #60b044);
+                    background-image: linear-gradient(#8add6d, #60b044);
+            
+                    border-color: #4a993e;
+                    border-radius: 10px;
+                    padding: 5px;
+                    text-align: center;
+                    cursor: pointer;
+                }
+                .login-to-reply{
+                    font-size: 1em;
+                    display: inline-block;
+                    margin: 5px 10px 5px 0px;
+                    width: 150px;  
+                    float: right;         
+                    border: 1px solid #8add6d;
+                    border-radius: 10px;
+                    padding: 5px;
+                    text-align: center;            
+                }
             }
 
-            .login-to-reply{
-                font-size: 1em;
-                display: inline-block;
-                margin: 5px 10px 5px 0px;
-                width: 150px;  
-                float: right;         
-                border: 1px solid #8add6d;
-                border-radius: 10px;
-                padding: 5px;
-                text-align: center;            
-            }
         }
 	}
+}
+
+@media screen and (max-width: 600px) {
+    .topics-div {
+        width: 100%;
+
+        .contents-box {
+            width: 100%;
+        }
+
+        .ask-form {
+            width: 100%;
+        }
+    
+        .reply-form {
+            width: 100%;
+        }
+
+        .form {
+            .input-box {
+                .input-div {
+                    .input-label {
+                        font-size: 1.2em;
+                        display: block;
+                        width: 100%;
+                        text-align: center;
+                    }
+                    .input {
+                        font-size: 1em;
+                        display: block;
+                        width: 100%;
+                        border-radius: 5px;
+                        padding: 5px;
+                    }
+                    .select {
+                        font-size: 1em;
+                        width: 90px;
+                        padding: 5px;
+                        display: block;
+                        margin: 0px auto;
+                        line-height: 1.5;
+                        border-style: inset;
+                        border-radius: 5px;
+                        height: 34px;         
+                    }
+                }
+            }
+        }
+    }
 }

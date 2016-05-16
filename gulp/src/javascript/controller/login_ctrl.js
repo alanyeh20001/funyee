@@ -20,7 +20,7 @@
                         .then(function(user) {
                             console.log("Login with test account success!");
                             console.log(user);
-                            $state.go('topics');
+                            window.location.replace("/");
                         });
                 };
             }
