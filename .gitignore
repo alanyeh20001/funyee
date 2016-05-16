@@ -16,6 +16,9 @@
 !/log/.keep
 /tmp
 
+# Ignore yaml
+/config/database.yml
+
 .DS_Store
 
 gulp/bower_components/*
