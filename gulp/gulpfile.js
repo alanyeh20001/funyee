@@ -9,7 +9,10 @@ var gulp = require('gulp'),
 
 
 gulp.task('default', ['script', 'sass', 'style', 'templates']);
-gulp.task('server', ['webserver', 'watch']);
+gulp.task('sass', ['sass']);
+gulp.task('squeeze', ['script', 'templates', 'style']);
+gulp.task('build', ['build:bower', 'build:script', 'build:style', 'build:templates']);
+
 
 path= {
     scripts: ['./src/javascript/**/*.js'],
@@ -66,13 +69,7 @@ gulp.task('webserver', function() {
     gulpConnect.server();
 })
 
-gulp.task('watch', function () {
-    gulp.watch(path.scripts, ['script']);
-    gulp.watch(path.sass, ['style']);
-    gulp.watch(path.templates, ['templates']);
-});
-
-gulp.task('watch:build', function() {
+gulp.task('watch', function() {
     gulp.watch(path.scripts, ['script']);
     gulp.watch(distPath.script, ['build:script']);
     gulp.watch(path.sass, ['sass']);
