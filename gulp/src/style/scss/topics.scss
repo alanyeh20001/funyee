@@ -169,16 +169,17 @@
 
                     .text {
                         padding: 5px;
+                        border: 1px solid #DDDDDD;
                         border-radius: 10px;
                         display: inline-block;          
                         word-wrap: break-word;
                         max-width: 100%;
                     }
                     .question {
-                        background-color: #AEDCB8;
+                        background-color: #EEEEEE;
                     }
                     .answer {
-                        background-color: #5BA9E6;
+                        background-color: #92C9FF;
                     }
                     .left {
                         float: left;
@@ -193,7 +194,9 @@
         }
 
         .content-function-bar {
-            background-color: #DBFFDC;
+            background-color: #92C9FF;
+            background-image: -webkit-linear-gradient(#92C9FF, #5CABFF);
+            background-image: linear-gradient(#92C9FF,#5CABFF);
             border: 1px solid #e9ebee;
             border-radius: 10px;
             margin: 0px auto;
@@ -207,7 +210,7 @@
                     display: inline-block;
                     font-size: 24px;
                     padding:10px;
-                    color: #AAAAAA;
+                    color: white;
                 }
                 .content-function-icon:hover {
                     display: inline-block;
@@ -222,9 +225,9 @@
                     float: right;
             
                     color: #fff;
-                    background-color: #8add6d;
-                    background-image: -webkit-linear-gradient(#8add6d, #60b044);
-                    background-image: linear-gradient(#8add6d, #60b044);
+                    background-color: #FF9494;
+                    background-image: -webkit-linear-gradient(#FF9494, #FF4444);
+                    background-image: linear-gradient(#FF9494,#FF4444);
             
                     border-color: #4a993e;
                     border-radius: 10px;
@@ -291,6 +294,19 @@
                         border-style: inset;
                         border-radius: 5px;
                         height: 34px;         
+                    }
+                }
+            }
+        }
+        .contents-box {
+            .content-function-bar {
+                .content-function-icons {
+                    .login-to-reply{   
+                        display: block;
+                        float: none;
+                        width: 250px;
+                        margin: 0px auto; 
+                        text-align: center;  
                     }
                 }
             }
