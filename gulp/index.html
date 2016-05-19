@@ -12,21 +12,50 @@
         <link rel="stylesheet" type"text/css" href="bower_components/components-font-awesome/css/font-awesome.min.css">
     </head>
     <body>
-        <div class= "navbar-div" ng-controller="navbarCtrl as Navbar">
-            <a ui-sref="topics" class="custom-a">
-                <img src="images/funyee.png" class="web-logo"></img>
-            </a>
-            <div class="right-items">
+        <navbar ng-controller="navbarCtrl as Navbar">
+            <ul class= "navbar-div">
+                <li>
+                    <a ui-sref="topics">
+                        <img ui-sref="topics" src="images/funyee.png" class="web-logo"></img>
+                    </a>
+                </li>
+                <li class="right">
+                    <a ui-sref="login" class="item custom-a" ng-hide="Navbar.isLogin">
+                        {{'user.login' | translate}}
+                    </a>
+                </li>
+                <li class="right">
+                    <a class="item custom-a" ng-show="Navbar.isLogin" ng-click="Navbar.logout()">
+                        {{'user.logout' | translate}}
+                    </a>
+                </li>
+                <li class="right">
+                    <a ng-click="Navbar.changeLan('en_US')">{{'english' | translate}}</a>
+                </li>
+                <li class="right">
+                    <a ng-click="Navbar.changeLan('zh_TW')">{{'chinese' | translate}}</a>
+                </li>
+                <li class="collapse-btn" ng-init="Navbar.show=false" ng-click="Navbar.show=!Navbar.show">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </li>
+            </ul>
+            <div class="collapse-navbar" ng-show="true">
+              <div>
                 <a ui-sref="login" class="item custom-a" ng-hide="Navbar.isLogin">
                     {{'user.login' | translate}}
                 </a>
-                <span class="item custom-a" ng-show="Navbar.isLogin" ng-click="Navbar.logout()">
+              </div>
+              <div>
+                <a class="item custom-a" ng-show="Navbar.isLogin" ng-click="Navbar.logout()">
                     {{'user.logout' | translate}}
-                </span>
-                <span ng-click="Navbar.changeLan('en_US')" class="item">{{'english' | translate}}</span>
-                <span ng-click="Navbar.changeLan('zh_TW')" class="item">{{'chinese' | translate}}</span>
+                </a>
+              </div>
+              <div><a ng-click="Navbar.changeLan('en_US')">{{'english' | translate}}</a></div>
+              <div><a ng-click="Navbar.changeLan('zh_TW')">{{'chinese' | translate}}</a></div>
             </div>
-        </div>
+        </navbar>
         <div class="view-a" ui-view="viewA"></div>
     </body>
 </html>

@@ -48,8 +48,16 @@
                     newSentence.is_question = isQuestion;
                     console.log(newSentence.$save());
 
-                    Topics.askForm = false;
-                    Topics.getTopics();
+                    (new Promise(function(resolve, reject) {
+                        var result = newSentence.$save();
+                        resolve(result);
+                    })).then(function(result) {
+                        console.log(result);
+                      Topics.askForm = false;
+                      Topics.getTopics();
+                      Topics.questionContent = "";
+                    });
+
 
                 };
 
@@ -99,6 +107,7 @@
                         resolve(result);
                     })).then(function(result) {
                         console.log(result);
+                        Topics.answersInfo[index].answer = "";
                         Topics.showReply[index] = false;
                         Topics.getTopics();
                     });

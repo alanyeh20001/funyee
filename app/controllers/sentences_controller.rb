@@ -2,8 +2,8 @@ class SentencesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    question_ids = Sentence.select(:id).where(is_question: true)
-    sentences = Sentence.where(question_id: question_ids).order(:question_id, :created_at)
+    question_ids = Sentence.select(:id).where(is_question: true).order(:created_at)
+    sentences = Sentence.where(question_id: question_ids).order(question_id: :desc).order(:created_at)
     
     @topics = []
     question_group = []
