@@ -47,15 +47,22 @@
                     newSentence.language = language;
                     newSentence.is_question = isQuestion;
 
-                    (new Promise(function(resolve, reject) {
-                        var result = newSentence.$save();
-                        resolve(result);
-                    })).then(function(result) {
-                        console.log(result);
-                      Topics.askForm = false;
-                      Topics.getTopics();
-                      Topics.questionContent = "";
-                    });
+                    newSentence.$save()
+                        .then(function(result) {
+                            console.log(result);
+                            Topics.askForm = false;
+                            Topics.getTopics();
+                            Topics.questionContent = "";
+                        });
+                    // (new Promise(function(resolve, reject) {
+                    //     var result = newSentence.$save();
+                    //     resolve(result);
+                    // })).then(function(result) {
+                    //     console.log(result);
+                    //   Topics.askForm = false;
+                    //   Topics.getTopics();
+                    //   Topics.questionContent = "";
+                    // });
 
 
                 };
@@ -101,15 +108,14 @@
                     newSentence.is_question = isQuestion;
                     newSentence.question_id = questionId;
 
-                    (new Promise(function(resolve, reject) {
-                        var result = newSentence.$save();
-                        resolve(result);
-                    })).then(function(result) {
-                        console.log(result);
-                        Topics.answersInfo[index].answer = "";
-                        Topics.showReply[index] = false;
-                        Topics.getTopics();
-                    });
+                    newSentence.$save()
+                        .then(function(result) {
+                            console.log(result);
+                            Topics.answersInfo[index].answer = "";
+                            Topics.showReply[index] = false;
+                            Topics.getTopics();                            
+                        });
+
 
                 };
 
