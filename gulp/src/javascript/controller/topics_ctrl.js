@@ -46,7 +46,6 @@
                     newSentence.content = content;
                     newSentence.language = language;
                     newSentence.is_question = isQuestion;
-                    console.log(newSentence.$save());
 
                     (new Promise(function(resolve, reject) {
                         var result = newSentence.$save();
