@@ -104,7 +104,8 @@
 
                     var newSentence = new Sentence();
                     newSentence.content = content;
-                    newSentence.language = language;
+                    //We want to eliminate it for the future
+                    newSentence.language = "English";
                     newSentence.is_question = isQuestion;
                     newSentence.question_id = questionId;
 
