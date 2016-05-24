@@ -25,7 +25,7 @@
                 <div ng-repeat="sentence in topic" class="text-block">
                     <div class="info-box" ng-class="sentence.is_question?'box-left':'box-right'">
                         <i class="user-info fa fa-user" aria-hidden="true"></i>
-                        <span class="lang" ng-class="sentence.is_question?'left':'right'">{{sentence.language | translate}}</span>
+                        <span class="lang" ng-if="sentence.is_question" ng-class="sentence.is_question?'left':'right'">{{sentence.language | translate}}</span>
                     </div>
                     <div class="text-box" ng-class="sentence.is_question?'left':'right'">
                         <span class="text" ng-class="[sentence.is_question?'left':'right', sentence.is_question?'question':'answer']">{{sentence.content}}</span>
@@ -52,12 +52,12 @@
                         <label class="input-label">{{'answer' | translate}}</label>
                         <input class="input" ng-model="Topics.answersInfo[$index].answer"></input>
                     </div>
-                    <div class="input-div">
+                    <!--<div class="input-div">
                         <label class="input-label">{{'language' | translate}}</label>
                         <select class="select" ng-model="Topics.answersInfo[$index].language" ng-init="Topics.initTopicsLanguage($index)">
                             <option class="option" ng-repeat="language in Topics.languages" ng-value="language">{{language}}</option>
                         </select>
-                    </div>
+                    </div>-->
                 </div>
                 <span class="submit-button" ng-click="Topics.submitAnswer($index)">
                     {{'question.submit' | translate}}

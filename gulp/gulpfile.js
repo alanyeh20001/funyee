@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     gulpConcat = require('gulp-concat'),
     gulpUglify = require('gulp-uglify'),
     gulpSass = require('gulp-sass'),
+    gulpImagemin = require('gulp-imagemin'),
     gulpUglifycss = require('gulp-uglifycss'),
     gulpNgmin = require('gulp-ngmin'),
     gulpConnect = require('gulp-connect');
@@ -19,13 +20,14 @@ path= {
     styles: ['./src/style/css/**/*.css'],
     sass: ['./src/style/scss/**/*.scss'],
     templates: ['./src/templates/**/*.html'],
-    images: ['./images/**/*.png']
+    images: ['./src/images/**/*.png']
 };
 
 distPath = {
     script: "./dist/javascript/*.js",
     style: "./dist/**/*.css",
-    templates: "./dist/**/*.html"
+    templates: "./dist/**/*.html",
+    images: "./dist/**/*.png"
 }
 
 bowerPaths = [
@@ -78,6 +80,12 @@ gulp.task('watch', function() {
     gulp.watch(path.templates, ['templates']);
     gulp.watch(distPath.templates, ['build:templates']);
     gulp.watch(path.images, ['build:images']);
+});
+
+gulp.task('image', function() {
+    gulp.src(path.images)
+        .pipe(gulpImagemin())
+        .pipe(gulp.dest('dist/images'));
 });
 
 gulp.task('style', function() {

@@ -46,17 +46,23 @@
                     newSentence.content = content;
                     newSentence.language = language;
                     newSentence.is_question = isQuestion;
-                    console.log(newSentence.$save());
 
-                    (new Promise(function(resolve, reject) {
-                        var result = newSentence.$save();
-                        resolve(result);
-                    })).then(function(result) {
-                        console.log(result);
-                      Topics.askForm = false;
-                      Topics.getTopics();
-                      Topics.questionContent = "";
-                    });
+                    newSentence.$save()
+                        .then(function(result) {
+                            console.log(result);
+                            Topics.askForm = false;
+                            Topics.getTopics();
+                            Topics.questionContent = "";
+                        });
+                    // (new Promise(function(resolve, reject) {
+                    //     var result = newSentence.$save();
+                    //     resolve(result);
+                    // })).then(function(result) {
+                    //     console.log(result);
+                    //   Topics.askForm = false;
+                    //   Topics.getTopics();
+                    //   Topics.questionContent = "";
+                    // });
 
 
                 };
@@ -98,19 +104,19 @@
 
                     var newSentence = new Sentence();
                     newSentence.content = content;
-                    newSentence.language = language;
+                    //We want to eliminate it for the future
+                    newSentence.language = "English";
                     newSentence.is_question = isQuestion;
                     newSentence.question_id = questionId;
 
-                    (new Promise(function(resolve, reject) {
-                        var result = newSentence.$save();
-                        resolve(result);
-                    })).then(function(result) {
-                        console.log(result);
-                        Topics.answersInfo[index].answer = "";
-                        Topics.showReply[index] = false;
-                        Topics.getTopics();
-                    });
+                    newSentence.$save()
+                        .then(function(result) {
+                            console.log(result);
+                            Topics.answersInfo[index].answer = "";
+                            Topics.showReply[index] = false;
+                            Topics.getTopics();                            
+                        });
+
 
                 };
 
