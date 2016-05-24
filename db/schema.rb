@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524143555) do
+ActiveRecord::Schema.define(version: 20160524144158) do
+
+  create_table "sentence_likes", force: :cascade do |t|
+    t.integer  "sentence_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "sentences", force: :cascade do |t|
     t.text     "content"
