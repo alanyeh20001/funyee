@@ -12,7 +12,7 @@
         <link rel="stylesheet" type"text/css" href="bower_components/components-font-awesome/css/font-awesome.min.css">
     </head>
     <body>
-        <navbar ng-controller="navbarCtrl as Navbar">
+        <div ng-controller="navbarCtrl as Navbar" ng-init="Navbar.show = false">
             <ul class= "navbar-div">
                 <li>
                     <a ui-sref="topics">
@@ -35,13 +35,15 @@
                 <li class="right">
                     <a ng-click="Navbar.changeLan('zh_TW')">{{'chinese' | translate}}</a>
                 </li>
-                <li class="collapse-btn" ng-init="Navbar.show=false" ng-click="Navbar.show=!Navbar.show">
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                <li class="collapse-btn">
+                    <a ng-click="Navbar.show=!Navbar.show">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </a>
                 </li>
             </ul>
-            <div class="collapse-navbar" ng-show="true">
+            <div class="collapse-navbar" ng-show="Navbar.show">
               <div>
                 <a ui-sref="login" class="item custom-a" ng-hide="Navbar.isLogin">
                     {{'user.login' | translate}}
@@ -55,7 +57,7 @@
               <div><a ng-click="Navbar.changeLan('en_US')">{{'english' | translate}}</a></div>
               <div><a ng-click="Navbar.changeLan('zh_TW')">{{'chinese' | translate}}</a></div>
             </div>
-        </navbar>
+        </div>
         <div class="view-a" ui-view="viewA"></div>
     </body>
 </html>

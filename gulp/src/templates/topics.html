@@ -22,29 +22,31 @@
     <div class="contents-box" ng-init="Topics.initTopicsFunction()">
         <div ng-repeat="topic in Topics.topics" ng-init="Topics.initTopic($index)">
     	    <div class="content">
-                <div ng-repeat="sentence in topic" class="text-block">
-                    <div class="info-box" ng-class="sentence.is_question?'box-left':'box-right'">
-                        <i class="user-info fa fa-user" aria-hidden="true"></i>
-                        <span class="lang" ng-if="sentence.is_question" ng-class="sentence.is_question?'left':'right'">{{sentence.language | translate}}</span>
+                <div class="text-area">
+                    <div ng-repeat="sentence in topic" class="text-block">
+                        <div class="info-box" ng-class="sentence.is_question?'box-left':'box-right'">
+                            <i class="user-info fa fa-user" aria-hidden="true"></i>
+                            <span class="lang" ng-if="sentence.is_question" ng-class="sentence.is_question?'left':'right'">{{sentence.language | translate}}</span>
+                        </div>
+                        <div class="text-box" ng-class="sentence.is_question?'left':'right'">
+                            <span class="text" ng-class="[sentence.is_question?'left':'right', sentence.is_question?'question':'answer']">{{sentence.content}}</span>
+                        </div>
                     </div>
-                    <div class="text-box" ng-class="sentence.is_question?'left':'right'">
-                        <span class="text" ng-class="[sentence.is_question?'left':'right', sentence.is_question?'question':'answer']">{{sentence.content}}</span>
+                </div>
+                <div class="content-function-bar">
+                    <div class="content-function-icons">
+                        <i class="fa fa-thumbs-o-up content-function-icon"></i>
+                        <i class="fa fa-star-o content-function-icon"></i>
+                        <i class="fa fa-minus content-function-icon"></i>
+                        <span class="content-funtion-reply" ng-click="Topics.showReply[$index] = !Topics.showReply[$index]" ng-show="Topics.    isLogin">
+                            {{'answer.reply' | translate }}
+                        </span>
+                        <span class="login-to-reply" ng-hide="Topics.isLogin">
+                            {{'answer.reply.login.ask' | translate }}
+                        </span>
                     </div>
                 </div>
     	    </div>
-            <div class="content-function-bar">
-                <div class="content-function-icons">
-                    <i class="fa fa-thumbs-o-up content-function-icon"></i>
-                    <i class="fa fa-star-o content-function-icon"></i>
-                    <i class="fa fa-minus content-function-icon"></i>
-                    <span class="content-funtion-reply" ng-click="Topics.showReply[$index] = !Topics.showReply[$index]" ng-show="Topics.    isLogin">
-                        {{'answer.reply' | translate }}
-                    </span>
-                    <span class="login-to-reply" ng-hide="Topics.isLogin">
-                        {{'answer.reply.login.ask' | translate }}
-                    </span>
-                </div>
-            </div>
             <form class="form reply-form" ng-show="Topics.showReply[$index]">
                 <span class="form-title">{{'answer.title' | translate}}</span>
                 <div class="input-box">
