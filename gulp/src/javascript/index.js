@@ -4,7 +4,7 @@ var funyeeApp = angular.module("funyeeApp", ["ui.router", "pascalprecht.translat
 	'use strict';
 
 	funyeeApp
-	    .constant("API_URL", "http://localhost:3000/");
+	    .constant("API_URL", "/");
 })
 
 (function() {
@@ -43,7 +43,7 @@ var funyeeApp = angular.module("funyeeApp", ["ui.router", "pascalprecht.translat
         "chinese": "中文",
         "japanese": "日文",
         "korean": "韓文",
-        "question.ask": "題問",
+        "question.ask": "提問",
         "question.title": "請輸入您的問題",
         "question.submit": "送出",
         "question.cancel": "取消",

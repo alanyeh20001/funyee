@@ -1,0 +1,3 @@
+tar -cvf front.tar ../public/
+./funyee20001_scp apps front.tar /home/apps/funyee/current
+rm front.tar

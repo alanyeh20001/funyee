@@ -8,6 +8,7 @@ navbar {
     padding: 0px 10%;
     overflow: hidden;
     height: 55px;
+    z-index: 2;
 
     background-color: #7EC4FF;
     background-image: -webkit-linear-gradient(#7EC4FF, #4A9CF1);
@@ -32,6 +33,16 @@ navbar {
 	}
     li {
         float: left;
+        a {
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            line-height: 45px;
+            cursor: pointer;
+            color: black;
+            padding: 5px 5px;
+        }
     }
 
     .collapse-btn {
@@ -41,16 +52,6 @@ navbar {
     }
 
     
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        line-height: 45px;
-        cursor: pointer;
-        color: black;
-        padding: 5px 5px;
-    }
 
     .right {
         float: right;
@@ -65,6 +66,7 @@ navbar {
 }
 
 .collapse-navbar {
+    z-index: 2;
     display: none;
 }
 
@@ -99,6 +101,7 @@ navbar {
     width: 100%;
     position: fixed;
     top: 55px;
+    left: 0px;
 
     div {
         display: block;

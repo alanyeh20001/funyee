@@ -1,5 +1,7 @@
 <div class="topics-div" ng-controller="topicsCtrl as Topics">
-    <div class="function-zone" ng-init="Topics.askForm=false">
+    <div class="title-zone" ng-init="Topics.askForm=false">
+        <h1 class="title">Funyee</h1>
+        <h3 class="title-comment">Translate Everything ~</h3>
         <span class="button" ng-click="Topics.askForm = !Topics.askForm" ng-show="Topics.isLogin">{{'question.ask' | translate}}</span>
         <span class="login-to-ask" ng-hide="Topics.isLogin">{{'question.login.ask' | translate}}</span>
     </div>
