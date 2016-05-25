@@ -2,7 +2,7 @@
     display:block;
     margin:0px auto 0px auto;
     padding-top: 10px;
-    width: 80%;
+    width: 100%;
 
 
     .function-zone {
@@ -48,84 +48,109 @@
     .reply-form {
         width: 100%;
     }
-
-    .form {
-        margin: 0px auto;
-        background-color: white;
-        border-radius: 10px;
-        padding:10px;
-
-        .form-title {
-            display: block;
-            font-size: 1.2em;
-            text-align: center;
-        }
-        
-        .input-box {
-            margin: 10px 0px;
-            border-top: 1px solid #CCCCCC;
-            border-bottom: 1px solid #CCCCCC;
-            padding:10px 0px;
-
-            .input-div {
-                padding: 5px 0px;
-                width: 100%;
-                margin: 0px auto;
     
-                .input-label {
-                    font-size: 1.2em;
-                    display: inline-block;
-                    width: 18%;
-                }
-                .input {
-                    font-size: 1em;
-                    display: inline-block;
-                    width: 72%;
-                    border-radius: 5px;
-                    padding: 5px;
-                }
-                .select {
-                    font-size: 1em;
-                    width: 90px;
-                    padding: 5px;
-                    line-height: 1.5;
-                    border-style: inset;
-                    border-radius: 5px;
-                    height: 34px;         
+    .form-screen{
+
+        .background{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            opacity: 0.5;
+            z-index: 1;
+            background-color: #555555;
+        }
+
+        .form {
+            background-color: white;
+            border-radius: 10px;
+            padding:10px;
+            width: 70%;
+            position: fixed;
+            top: calc(50% - 100px);
+            left: calc(50% - 35%);
+            z-index: 2;
+    
+            .form-title {
+                display: block;
+                font-size: 1.2em;
+                text-align: center;
+            }
+            
+            .input-box {
+                margin: 10px 0px;
+                border-top: 1px solid #CCCCCC;
+                border-bottom: 1px solid #CCCCCC;
+                padding:10px 0px;
+    
+                .input-div {
+                    padding: 5px 0px;
+                    width: 100%;
+                    margin: 0px auto;
+        
+                    .input-label {
+                        font-size: 1.2em;
+                        display: inline-block;
+                        width: 18%;
+                    }
+                    .input {
+                        font-size: 1em;
+                        display: inline-block;
+                        width: 72%;
+                        border-radius: 5px;
+                        padding: 5px;
+                    }
+                    .select {
+                        font-size: 1em;
+                        width: 90px;
+                        padding: 5px;
+                        line-height: 1.5;
+                        border-style: inset;
+                        border-radius: 5px;
+                        height: 34px;         
+                    }
                 }
             }
-        }
-
-        .submit-button {
-            font-size: 1em;
-            display: block;
-            width: 70px;
-            margin: 0px auto 0px auto;
     
-            color: #fff;
-            background-color: #FF9292;
-            background-image: -webkit-linear-gradient(#FF9292, #D84040);
-            background-image: linear-gradient(#FF9292,#D84040);
+            .action-buttons {
+                display: block;
+                width: 150px;
+                margin: 0px auto 0px auto;
+                .submit-button {
+                    font-size: 1em;
+                    display: inline-block;
+                    width: 70px;
+            
+                    color: #fff;
+                    background-color: #FF9292;
+                    background-image: -webkit-linear-gradient(#FF9292, #D84040);
+                    background-image: linear-gradient(#FF9292,#D84040);
+            
+                    border-color: #4a993e;
+                    border-radius: 10px;
+                    padding: 5px;
+                    text-align: center;
+                    cursor: pointer;
+                }
+            }
     
-            border-color: #4a993e;
-            border-radius: 10px;
-            padding: 5px;
-            text-align: center;
-            cursor: pointer;
         }
-
     }
+
+    
 
     .contents-box {
         display: block;
-        width: 80%;
+        width: 100%;
         margin: 0px auto 0px auto;
 
         .content {
-            display: block;
-            margin: 10px 0px 30px 0px;
+            display: inline-block;
+            margin: 10px 5% 30px 5%;
         	background-color: white;
         	height: 244px;
+            width: 40%;
         	border-radius: 10px;
             box-shadow: 10px 10px 20px #888888;
             
@@ -259,10 +284,26 @@
 
 @media screen and (max-width: 650px) {
     .topics-div {
-        width: 90%;
-
+        width: 100%;
         .contents-box {
             width: 100%;
+            .content {
+                display: block;
+                width: 90%;
+                margin: 30px auto;
+
+                .content-function-bar {
+                    .content-function-icons {
+                        .login-to-reply{   
+                            display: block;
+                            float: none;
+                            width: 250px;
+                            margin: 0px auto; 
+                            text-align: center;  
+                        }
+                    }
+                }
+            }
         }
 
         .ask-form {
@@ -274,6 +315,9 @@
         }
 
         .form {
+            width: 90%;
+            top:calc(50% - 100px);
+            left:calc(50% - 45%);
             .input-box {
                 .input-div {
                     .input-label {
@@ -299,19 +343,6 @@
                         border-style: inset;
                         border-radius: 5px;
                         height: 34px;         
-                    }
-                }
-            }
-        }
-        .contents-box {
-            .content-function-bar {
-                .content-function-icons {
-                    .login-to-reply{   
-                        display: block;
-                        float: none;
-                        width: 250px;
-                        margin: 0px auto; 
-                        text-align: center;  
                     }
                 }
             }

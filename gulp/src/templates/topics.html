@@ -3,25 +3,31 @@
         <span class="button" ng-click="Topics.askForm = !Topics.askForm" ng-show="Topics.isLogin">{{'question.ask' | translate}}</span>
         <span class="login-to-ask" ng-hide="Topics.isLogin">{{'question.login.ask' | translate}}</span>
     </div>
-    <form class="form ask-form" ng-show="Topics.askForm">
-        <span class="form-title">{{'question.title' | translate}}</span>
-        <div class="input-box">
-            <div class="input-div">
-                <label class="input-label">{{'question' | translate}}</label>
-                <input class="input" ng-model="Topics.questionContent"></input>
+    <div class="form-screen" ng-show="Topics.askForm">
+        <div class="background"></div>
+        <form class="form ask-form">
+            <span class="form-title">{{'question.title' | translate}}</span>
+            <div class="input-box">
+                <div class="input-div">
+                    <label class="input-label">{{'question' | translate}}</label>
+                    <input class="input" ng-model="Topics.questionContent"></input>
+                </div>
+                <div class="input-div">
+                    <label class="input-label">{{'language' | translate}}</label>
+                    <select class="select" ng-model="Topics.languageSelected" ng-init="Topics.initQuestionLanguage()">
+                        <option class="option" ng-repeat="language in Topics.languages" ng-value="language">{{language}}</option>
+                    </select>
+                </div>
             </div>
-            <div class="input-div">
-                <label class="input-label">{{'language' | translate}}</label>
-                <select class="select" ng-model="Topics.languageSelected" ng-init="Topics.initQuestionLanguage()">
-                    <option class="option" ng-repeat="language in Topics.languages" ng-value="language">{{language}}</option>
-                </select>
+            <div class="action-buttons">
+                <span class="submit-button" ng-click="Topics.submitQuestion()">{{'question.submit' | translate}}</span>
+                <span class="submit-button" ng-click="Topics.askForm=!Topics.askForm">{{'question.cancel' | translate}}</span>
             </div>
-        </div>
-        <span class="submit-button" ng-click="Topics.submitQuestion()">{{'question.submit' | translate}}</span>
-    </form>
+        </form>
+    </div>
     <div class="contents-box" ng-init="Topics.initTopicsFunction()">
-        <div ng-repeat="topic in Topics.topics" ng-init="Topics.initTopic($index)">
-    	    <div class="content">
+        <div class="content" ng-repeat="topic in Topics.topics" ng-init="Topics.initTopic($index)">
+    	    <div>
                 <div class="text-area">
                     <div ng-repeat="sentence in topic" class="text-block">
                         <div class="info-box" ng-class="sentence.is_question?'box-left':'box-right'">
@@ -47,24 +53,32 @@
                     </div>
                 </div>
     	    </div>
-            <form class="form reply-form" ng-show="Topics.showReply[$index]">
-                <span class="form-title">{{'answer.title' | translate}}</span>
-                <div class="input-box">
-                    <div class="input-div">
-                        <label class="input-label">{{'answer' | translate}}</label>
-                        <input class="input" ng-model="Topics.answersInfo[$index].answer"></input>
+            <div class="form-screen" ng-show="Topics.showReply[$index]">
+                <div class="background"></div>
+                <form class="form reply-form">
+                    <span class="form-title">{{'answer.title' | translate}}</span>
+                    <div class="input-box">
+                        <div class="input-div">
+                            <label class="input-label">{{'answer' | translate}}</label>
+                            <input class="input" ng-model="Topics.answersInfo[$index].answer"></input>
+                        </div>
+                        <!--<div class="input-div">
+                            <label class="input-label">{{'language' | translate}}</label>
+                            <select class="select" ng-model="Topics.answersInfo[$index].language" ng-init="Topics.initTopicsLanguage($index)">
+                                <option class="option" ng-repeat="language in Topics.languages" ng-value="language">{{language}}</option>
+                            </select>
+                        </div>-->
                     </div>
-                    <!--<div class="input-div">
-                        <label class="input-label">{{'language' | translate}}</label>
-                        <select class="select" ng-model="Topics.answersInfo[$index].language" ng-init="Topics.initTopicsLanguage($index)">
-                            <option class="option" ng-repeat="language in Topics.languages" ng-value="language">{{language}}</option>
-                        </select>
-                    </div>-->
-                </div>
-                <span class="submit-button" ng-click="Topics.submitAnswer($index)">
-                    {{'question.submit' | translate}}
-                </span>
-            </form>
+                    <div class="action-buttons">
+                        <span class="submit-button" ng-click="Topics.submitAnswer($index)">
+                            {{'question.submit' | translate}}
+                        </span>
+                        <span class="submit-button" ng-click="Topics.showReply[$index]=!Topics.showReply[$index]">
+                            {{'question.cancel' | translate}}
+                        </span>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

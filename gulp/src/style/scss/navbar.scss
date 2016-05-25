@@ -17,10 +17,6 @@ navbar {
     top: 0px;
     left: 0px;
     right: 0px;
-    
-    .custom-a {
-        text-decoration: none !important;
-    }
 
 	.web-logo {
 	    width: 40px;
@@ -62,7 +58,7 @@ navbar {
     }
     
     li a:hover:not(.active) {
-        background-color: #51B4EE;
+        opacity: 0.5;
     }
 
 
