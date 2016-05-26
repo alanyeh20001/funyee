@@ -2,18 +2,11 @@ class SentencesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   
   def index
-    question_ids = Sentence.select(:id).where(is_question: true).order(:created_at)
-    sentences = Sentence.where(question_id: question_ids).order(question_id: :desc).order(:created_at)
-    
+    sentences = nil
     if current_user
-      sentence_ids = sentences.select(:id) # for finding sentence liked ids
-      sentences_liked = current_user.sentence_likes.select(:sentence_id, :id).where(id: sentence_ids)
-      
-      @sentences_liked = {}
-      
-      sentences_liked.each do |sentence_liked|
-        @sentences_liked[sentence_liked[:sentence_id]] = sentence_liked[:id]
-      end
+      sentences = Sentence.find_by_sql("SELECT s.*, sl.id as like_id FROM sentences as s LEFT JOIN sentence_likes as sl ON s.id == sl.sentence_id AND sl.user_id == #{current_user.id} WHERE s.question_id in (SELECT id FROM sentences WHERE is_question == 't') ORDER BY question_id DESC, created_at")
+    else
+      sentences = Sentence.find_by_sql("SELECT * FROM sentences WHERE question_id IN (SELECT id FROM sentences WHERE is_question == 't') ORDER BY question_id DESC, created_at")
     end
 
     @topics = []
@@ -30,10 +23,7 @@ class SentencesController < ApplicationController
     end
     @topics << question_group
     
-    render json: {
-              topics: @topics,
-              sentences_liked: @sentences_liked
-            }.to_json
+    render json: @topics
   end
     
   def new
