@@ -5,6 +5,17 @@ class SentencesController < ApplicationController
     question_ids = Sentence.select(:id).where(is_question: true).order(:created_at)
     sentences = Sentence.where(question_id: question_ids).order(question_id: :desc).order(:created_at)
     
+    if current_user
+      sentence_ids = sentences.select(:id) # for finding sentence liked ids
+      sentences_liked = current_user.sentence_likes.select(:sentence_id, :id).where(id: sentence_ids)
+      
+      @sentences_liked = {}
+      
+      sentences_liked.each do |sentence_liked|
+        @sentences_liked[sentence_liked[:sentence_id]] = sentence_liked[:id]
+      end
+    end
+
     @topics = []
     question_group = []
     id_check = nil
@@ -19,7 +30,10 @@ class SentencesController < ApplicationController
     end
     @topics << question_group
     
-    render json: @topics
+    render json: {
+              topics: @topics,
+              sentences_liked: @sentences_liked
+            }.to_json
   end
     
   def new
