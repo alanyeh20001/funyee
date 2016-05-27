@@ -1,10 +1,13 @@
 (function() {
     funyeeApp
-        .controller("topicsCtrl", ["$scope", "sentenceServ", "$filter", "Auth",
-        	function($scope, sentenceServ, $filter, Auth) {
+        .controller("topicsCtrl", ["$scope", "sentenceServ", "sentenceLikeServ", "$filter", "Auth",
+        	function($scope, sentenceServ, sentenceLikeServ, $filter, Auth) {
 
                 var Topics = this;
                 var Sentence = sentenceServ.getRestfulModel();
+                var SentenceLike = sentenceLikeServ.getRestfulModel();
+                var addLikeFlag = false;
+                var cancelLikeFlag = false;
                 Topics.isLogin = false;
 
                 Auth.currentUser()
@@ -21,6 +24,37 @@
                     "japanese",
                     "korean"
                 ];
+
+                Topics.addLike = function(sentence) {
+                    if(addLikeFlag){
+                        return
+                    };
+                    addLikeFlag = true;
+                    var newSentenceLike = new SentenceLike();
+                    newSentenceLike.sentence_id = sentence.id;
+                    newSentenceLike.$save()
+                        .then(function(result) {
+                            sentence.like_id = result.like_id;
+                            sentence.like_counts +=1;
+                            addLikeFlag = false;
+                        });
+                };
+
+                Topics.cancelLike =function(sentence) {
+                    if(cancelLikeFlag){
+                        return
+                    };
+                    cancelLikeFlag = true;
+                    var params = {
+                        id: sentence.like_id
+                    }
+                    SentenceLike.delete(params).$promise
+                        .then(function(result) {
+                            sentence.like_id = null;
+                            sentence.like_counts -=1;
+                            cancelLikeFlag = false;
+                        });
+                };
 
                 Topics.getTopics =function() {
                     Topics.topics = Sentence.query();

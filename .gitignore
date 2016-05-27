@@ -24,7 +24,7 @@
 gulp/bower_components/*
 gulp/node_modules/*
 gulp/dist/**/*
-gulp/src/style/css/*
+gulp/src/style/css/**/*
 
 public/bower_components/
 public/dist/

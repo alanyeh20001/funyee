@@ -7,7 +7,10 @@ class SentenceLikesController < ApplicationController
       sentence.like_counts += 1
       
       if sentence.save
-        render json: { status: "sentence_like create success" }
+        render json: { 
+          status: "sentence_like create success" ,
+          like_id: @sentence_like.id
+        }
       else
         render json: { status: "sentence_like create fail" }
       end

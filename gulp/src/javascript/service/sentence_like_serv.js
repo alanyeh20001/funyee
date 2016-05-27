@@ -1,16 +1,16 @@
-// (function() {
-//     'use strict';
-//     funyeeApp
-//         .factory('sentenceLikeServ',["$resource", "API_URL",
-//             function($resource, API_URL) {
-//                 var sentences = $resource(API_URL + "sentences/:id", {"id": "@id"}); 
+(function() {
+    'use strict';
+    funyeeApp
+        .factory('sentenceLikeServ',["$resource", "API_URL",
+            function($resource, API_URL) {
+                var sentencesLikes = $resource(API_URL + "sentence_likes/:id", {"id": "@id"}); 
 
-//                 return {
-//                     getRestfulModel: function() {
-//                     	return sentences;
-//                     }
-//                 };
-//             }
-//         ]);
+                return {
+                    getRestfulModel: function() {
+                    	return sentencesLikes;
+                    }
+                };
+            }
+        ]);
 
-// }());
+}());

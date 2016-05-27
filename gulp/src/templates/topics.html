@@ -34,6 +34,8 @@
                     <div ng-repeat="sentence in topic" class="text-block">
                         <div class="info-box" ng-class="sentence.is_question?'box-left':'box-right'">
                             <i class="user-info fa fa-user" aria-hidden="true"></i>
+                            <i class="heart fa fa-heart-o" aria-hidden="true" ng-if="sentence.like_id == null" ng-click="Topics.addLike(sentence)">{{sentence.like_counts}}</i>
+                            <i class="heart fa fa-heart" aria-hidden="true" ng-if="sentence.like_id != null" ng-click="Topics.cancelLike(sentence)">{{sentence.like_counts}}</i>
                             <span class="lang" ng-if="sentence.is_question" ng-class="sentence.is_question?'left':'right'">{{sentence.language | translate}}</span>
                         </div>
                         <div class="text-box" ng-class="sentence.is_question?'left':'right'">
