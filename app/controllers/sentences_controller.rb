@@ -4,9 +4,9 @@ class SentencesController < ApplicationController
   def index
     sentences = nil
     if current_user
-      sentences = Sentence.find_by_sql("SELECT s.*, sl.id as like_id FROM (SELECT * FROM sentences WHERE question_id IN (SELECT id FROM sentences WHERE is_question = 't' ORDER BY created_at DESC)) s LEFT JOIN (SELECT * FROM sentence_likes WHERE user_id = #{current_user.id}) sl ON s.id = sl.sentence_id ORDER BY question_id DESC, created_at")
+      sentences = Sentence.find_by_sql("SELECT s.*, sl.id as like_id FROM (SELECT * FROM sentences WHERE question_id IN (SELECT id FROM sentences WHERE is_question ORDER BY created_at DESC)) s LEFT JOIN (SELECT * FROM sentence_likes WHERE user_id = #{current_user.id}) sl ON s.id = sl.sentence_id ORDER BY question_id DESC, created_at")
     else
-      sentences = Sentence.find_by_sql("SELECT * FROM sentences WHERE question_id IN (SELECT id FROM sentences WHERE is_question = 't' ORDER BY created_at DESC) ORDER BY question_id DESC, created_at")
+      sentences = Sentence.find_by_sql("SELECT * FROM sentences WHERE question_id IN (SELECT id FROM sentences WHERE is_question ORDER BY created_at DESC) ORDER BY question_id DESC, created_at")
     end
 
     @topics = []
