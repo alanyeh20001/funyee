@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'sentences#index'
   
   resources :sentences
+  resources :sentence_likes
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
