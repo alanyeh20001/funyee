@@ -6,8 +6,6 @@
                 var Topics = this;
                 var Sentence = sentenceServ.getRestfulModel();
                 var SentenceLike = sentenceLikeServ.getRestfulModel();
-                var addLikeFlag = false;
-                var cancelLikeFlag = false;
                 Topics.isLogin = false;
 
                 Auth.currentUser()
@@ -26,25 +24,26 @@
                 ];
 
                 Topics.addLike = function(sentence) {
-                    if(addLikeFlag){
+                    if(sentence.actionFlag){
                         return
                     };
-                    addLikeFlag = true;
+                    sentence.actionFlag = true;
+
                     var newSentenceLike = new SentenceLike();
                     newSentenceLike.sentence_id = sentence.id;
                     newSentenceLike.$save()
                         .then(function(result) {
                             sentence.like_id = result.like_id;
                             sentence.like_counts +=1;
-                            addLikeFlag = false;
+                            sentence.actionFlag = false;
                         });
                 };
 
                 Topics.cancelLike =function(sentence) {
-                    if(cancelLikeFlag){
+                    if(sentence.actionFlag){
                         return
                     };
-                    cancelLikeFlag = true;
+                    sentence.actionFlag = true;
                     var params = {
                         id: sentence.like_id
                     }
@@ -52,7 +51,7 @@
                         .then(function(result) {
                             sentence.like_id = null;
                             sentence.like_counts -=1;
-                            cancelLikeFlag = false;
+                            sentence.actionFlag = false;
                         });
                 };
 

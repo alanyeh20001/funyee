@@ -3,15 +3,14 @@
     margin:0px auto 0px auto;
     width: 100%;
 
-
     .title-zone {
         display:block;
         width:100%;
         margin: 0px auto 0px auto;
         padding: 10px 0px 20px 0px;
         background-color: #4A9CF1;
-        background-image: -webkit-linear-gradient(#4A9CF1, #E9EBEE);
-        background-image: linear-gradient(#4A9CF1,#E9EBEE);
+        background-image: -webkit-linear-gradient(#4A9CF1, #D7E2EE);
+        background-image: linear-gradient(#4A9CF1,#D7E2EE);
        
 
         .title {
@@ -66,6 +65,15 @@
     
     .form-screen{
 
+        @keyframes fade-in-opacity-half {
+            from {opacity: 0;}
+            to {opacity: 0.5;}
+        }
+        @keyframes fade-in-opacity-full {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
         .background{
             width: 100%;
             height: 100%;
@@ -75,6 +83,8 @@
             opacity: 0.5;
             z-index: 1;
             background-color: #555555;
+            animation-name: fade-in-opacity-half;
+            animation-duration: 0.8s;
         }
 
         .form {
@@ -86,6 +96,8 @@
             top: calc(50% - 100px);
             left: calc(50% - 20%);
             z-index: 2;
+            animation-name: fade-in-opacity-full;
+            animation-duration: 0.8s;
     
             .form-title {
                 padding: 15px 0px;
@@ -167,10 +179,10 @@
             display: inline-block;
             margin: 10px 3% 50px 3%;
         	background-color: white;
-        	height: 244px;
             width: 44%;
         	border-radius: 10px;
             box-shadow: 10px 10px 20px #888888;
+            border: 1px outset #6DABE8;
             
             .text-area{
                 display: block;
@@ -208,6 +220,14 @@
                             display: inline-block;
                             vertical-align: middle;
                             color: #FFD3D3; 
+
+                            span {
+                                display: inline-block;
+                                vertical-align: middle; 
+                                line-height: 30px;
+                                padding: 0px 5px;
+                                color: #4A9CF1;
+                            }
                         }
                         .heart:hover {
                             font-size: 30px;

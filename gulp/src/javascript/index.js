@@ -30,7 +30,8 @@ var funyeeApp = angular.module("funyeeApp", ["ui.router", "pascalprecht.translat
         "answer.reply": "Reply",
         "answer.reply.login.ask": "Login to Reply",
         "answer": "Answer",
-        "language": "Language"
+        "language": "Language",
+        "introduction": "Introduction"
     };
     
     var zh_TW = {
@@ -53,7 +54,8 @@ var funyeeApp = angular.module("funyeeApp", ["ui.router", "pascalprecht.translat
         "answer.reply.login.ask": "請登入回覆",
         "question": "問題",
         "answer": "答案",
-        "language": "語言"
+        "language": "語言",
+        "introduction": "介紹"
     };
 
     var ja = {

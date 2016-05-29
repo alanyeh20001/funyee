@@ -10,9 +10,9 @@ navbar {
     height: 55px;
     z-index: 2;
 
-    background-color: #7EC4FF;
-    background-image: -webkit-linear-gradient(#7EC4FF, #4A9CF1);
-    background-image: linear-gradient(#7EC4FF,#4A9CF1);
+    background-color: #4A9CF1;
+    background-image: -webkit-linear-gradient(#4A9CF1, #4A9CF1);
+    background-image: linear-gradient(#4A9CF1,#4A9CF1);
 
     position: fixed;
     top: 0px;
@@ -40,7 +40,7 @@ navbar {
             text-decoration: none;
             line-height: 45px;
             cursor: pointer;
-            color: black;
+            color: white;
             padding: 5px 5px;
         }
     }
@@ -57,6 +57,10 @@ navbar {
         float: right;
         width: 10%;
     }
+    .left {
+        float: left;
+        width: 10%;
+    }
     
     li a:hover:not(.active) {
         opacity: 0.5;
@@ -66,60 +70,72 @@ navbar {
 }
 
 .collapse-navbar {
-    z-index: 2;
+    z-index: 3;
     display: none;
 }
 
 @media screen and (max-width: 650px) {
 
-.navbar-div {
-    .collapse-btn {
-        width: 35px;
-        height: 35px;;
-	    margin-top: 10px;
-        display: block;
-        border: 1px solid black;
-        border-radius: 5px;
-        cursor: pointer;
-
-        a {
-            div{
-                width: 80%;
-                margin: 4px auto 0px auto;
-                border-top: 3px solid black;
-                height: 3px;
+    .navbar-div {
+        .collapse-btn {
+            width: 35px;
+            height: 35px;;
+    	    margin-top: 10px;
+            display: block;
+            border: 1px solid black;
+            border-radius: 5px;
+            cursor: pointer;
+    
+            a {
+                div{
+                    width: 80%;
+                    margin: 4px auto 0px auto;
+                    border-top: 3px solid black;
+                    height: 3px;
+                }
             }
         }
+        .right {
+            display: none;
+        }
+        .left {
+            display: none;
+        }
+    
     }
-    .right {
-        display: none;
-    }
-
-}
-.collapse-navbar {
-    display: block;
-    width: 100%;
-    position: fixed;
-    top: 55px;
-    left: 0px;
-
-    div {
+    .collapse-navbar {
         display: block;
         width: 100%;
-        background-color: #4D9EF2;
-
-        a {
+        position: fixed;
+        top: 55px;
+        left: 0px;
+    
+        div {
             display: block;
-            text-decoration: none;
-            color: black;
-            line-height: 40px;
-            text-align: center;
-            cursor: pointer;
+            width: 100%;
+            background-color: #4D9EF2;
+    
+            a {
+                display: block;
+                text-decoration: none;
+                color: white;
+                line-height: 40px;
+                text-align: center;
+                cursor: pointer;
+            }
+            a:hover {
+                background-color: #EFF7FF;
+            }
         }
-        a:hover {
-            background-color: #EFF7FF;
-        }
+    
     }
-}
+    .break-collapse-navbar {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+    }
 
 }
