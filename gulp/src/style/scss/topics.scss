@@ -220,6 +220,9 @@
                             display: inline-block;
                             vertical-align: middle;
                             color: #FFD3D3; 
+                            cursor: pointer;
+                            animation-name: heart-pump;
+                            animation-duration: 0.2s;
 
                             span {
                                 display: inline-block;
@@ -229,9 +232,10 @@
                                 color: #4A9CF1;
                             }
                         }
-                        .heart:hover {
-                            font-size: 30px;
-                            cursor: pointer;
+                        @keyframes heart-pump {
+                            0% {font-size: 20px;}
+                            50% {font-size: 30px;}
+                            100% {font-size: 20px;}
                         }
                         .lang {
                             background-color: #D8D8D8;
@@ -332,7 +336,7 @@
 	}
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 800px) {
     .topics-div {
         width: 100%;
         .contents-box {
